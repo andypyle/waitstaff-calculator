@@ -1,26 +1,70 @@
-body {
-	font-family: 'Raleway', 'Verdana', 'Helvetica', sans-serif;
+* {
+	box-sizing: border-box;
 }
 
-header h1 {
-	font-size: 3.75em;
-	font-weight: 700;
-	padding: .85em;
-	margin: 0;
-	border-bottom: 1px dotted #CCC;
+html,
+body {
+	font-family: 'Raleway', 'Verdana', 'Helvetica', sans-serif;
+	font-size: 18px/1.5 !important;
 }
-section h2 {
-	line-height: 2em;
-	font-size: 2em;
+
+h1,
+h2,
+h3,
+h4 {
+	margin: 0;
+}
+
+h1 {
+	font-size: 3.75em;
+}
+
+h2 {
+	font-size: 1.8em;
 	font-weight: 400;
 }
 
-main form {
-	padding-top: 2em;
+header h1 {
+	text-align: center;
+	padding: .75em 0;
 }
 
-.rightSide > div + div {
-	padding-top: 2em;
+header {
+	border-bottom: 1px dotted #CCC;
+}
+
+main {
+	width: 75%;
+	max-width: 85%;
+	margin: 0 auto;
+	border-left: 1px dotted #CCC;
+	border-right: 1px dotted #CCC;
+	padding: 1em;
+}
+
+.row {
+	display: flex;
+}
+
+.column {
+	display: block;
+	width: 50%;
+	float: left;
+	padding: .25em;
+}
+
+.column + .column {
+	margin-left: 1em;
+}
+
+.secHeader {
+	padding: .75em;
+	border-bottom: 1px dotted #CCC;
+}
+
+.secHeader + div {
+	padding-top: .25em;
+	margin-bottom: 3em;
 }
 
 .moneyTable {
@@ -28,14 +72,59 @@ main form {
 }
 
 .moneyRow {
-	display: table-row !important;
+	display: table-row;
+	width: 100%;
 }
 
-.moneyRow > div {
+.moneyRow > span {
 	display: table-cell;
-	font-size: 1.15em;
+	text-align: right;
+	font-size: 1.25em;
+	padding: .75em;
+	font-weight: 400;
 }
 
-.moneyRow > div + div {
-	padding: .25em 0 0 .5em;
+.moneyRow > span + span {
+	text-align: left;
+	padding-left: .25em;
+	font-weight: 300;
+}
+
+.moneyRow > span input {
+	padding: .5em;
+	width: 5em;
+	border: 1px solid #ddd;
+}
+
+.btns {
+	display: block;
+	padding: 1em;
+	text-align: center;
+	min-width: 100%;
+}
+
+.btns button {
+	display: inline;
+	width: 45%;
+	float: left;
+	padding: .75em 2em;
+	background-color: #DDD;
+	font-size: 1.2em;
+	border: 0;
+	margin: 0 .5em;
+	border-radius: .2em;
+}
+
+
+
+input:focus {
+	outline: 2px solid #aaa;
+}
+
+.inputPrefix {
+	display: inline-block;
+	font-size: 1.05em;
+	font-weight: 700;
+	padding: .25em;
+	margin: 0;	
 }
