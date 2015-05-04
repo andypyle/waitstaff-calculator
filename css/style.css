@@ -1,0 +1,20 @@
+body {
+	background-color: antiquewhite;
+}
+
+.moneyTable {
+	display: table;
+}
+
+.moneyRow {
+	display: table-row !important;
+}
+
+.moneyRow > div {
+	display: table-cell;
+	font-size: 1.15em;
+}
+
+.moneyRow > div + div {
+	padding: .25em 0 0 .5em;
+}
