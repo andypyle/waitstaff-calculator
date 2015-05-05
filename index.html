@@ -28,7 +28,7 @@
 </header>
 
 <main>
-	<form name="calculator">
+	<form name="calculator" ng-submit="calculate()">
 		<div class="row">
 			<section class="column">
 				<div class="secHeader">
@@ -45,7 +45,7 @@
 									<div class="inputPrefix">
 										$
 									</div>
-									<input type="number" id="mealBase">
+									<input required ng-model="baseMeal" type="number" id="mealBase">
 								</span>
 							</div>
 							<div class="moneyRow">
@@ -58,7 +58,7 @@
 									<div class="inputPrefix">
 										%
 									</div>
-									<input type="number" id="mealTaxRate">
+									<input required ng-model="taxRate" type="number" id="mealTaxRate">
 								</span>
 							</div>
 							<div class="moneyRow">
@@ -71,13 +71,13 @@
 									<div class="inputPrefix">
 										%
 									</div>
-									<input type="number" id="mealTipPercent" />
+									<input required ng-model="tipPercent" type="number" id="mealTipPercent" />
 								</span>
 							</div>						
 						</div>
 						<div class="btns">
 								<div>
-									<button type="cancel">Cancel <i class="fa fa-times fa-lg"></i></button>
+									<button type="reset" ng-click="cancel()">Cancel <i class="fa fa-times fa-lg"></i></button>
 									<button type="submit">Calculate <i class="fa fa-calculator fa-lg"></i></button>
 								</div>
 							</div>
@@ -91,11 +91,15 @@
 						<div class="moneyTable">
 							<div class="moneyRow">
 								<span>Subtotal:</span>
-								<span>0.00</span>
+								<span>{{ chargesSubtotal | currency }}</span>
 							</div>
 							<div class="moneyRow">
 								<span>Tip:</span>
-								<span>0.00</span>
+								<span>{{ chargesTip | currency }}</span>
+							</div>
+							<div class="moneyRow">
+								<span>Total:</span>
+								<span>{{ chargesTotal | currency }}</span>
 							</div>
 						</div>
 					</div>
@@ -108,18 +112,23 @@
 						<div class="moneyTable">
 							<div class="moneyRow">
 								<span>Tip Total:</span>
-								<span>0.00</span>
+								<span>{{ myTips | currency }}</span>
 							</div>
 							<div class="moneyRow">
 								<span>Meal Count:</span>
-								<span>0</span>
+								<span>{{ meals.length }}</span>
 							</div>
 							<div class="moneyRow">
 								<span>Average Tip:</span>
-								<span>0.00</span>
+								<span>{{ avgTip | currency }}</span>
 							</div>
 						</div>
 					</div>					
+				</div>
+				<div class="reset">
+					<button ng-click="intialize()" class="resetBtn">
+						Reset
+					</button>
 				</div>
 			</aside>
 		</div>
