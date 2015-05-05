@@ -64,6 +64,7 @@ angular.module('waitstaffCalc', ['ngMessages'])
 				totalPrice = subTotal + tipAmt;
 
 				$scope.addMeal(baseMeal, taxRate, tipPercent, subTotal, tipAmt, totalPrice);
+				$scope.cancel();
 			}
 		};
 	});

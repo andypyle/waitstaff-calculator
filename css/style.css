@@ -223,7 +223,7 @@ footer {
 	text-align: center;
 	border-top: 1px dotted #EEE;
 	color: white;
-	background-color: #68E598;
+	background-color: #44BF73;
 }
 
 footer span {
@@ -236,7 +236,7 @@ footer span a {
 	font-weight: 700;
 	background-color: #556F44;
 	text-decoration: none;
-	padding: .2em;
+	padding: .3em;
 }
 
 @media only screen and (max-width:600px){
@@ -349,9 +349,17 @@ footer span a {
 		font-size: 1.2em;
 		font-weight: 700;
 		border: 0;
-		margin: 0 0 1em 0;
+		margin: 0 0 1.25em 0;
 		border-radius: .2em;
 		color: white;
+	}
+
+	footer {
+		width: 100%;
+		display: flex;
+		flex-wrap: nowrap;
+		clear: both;
+		background-color: #44BF73;
 	}
 
 	footer span {
