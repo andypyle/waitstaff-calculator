@@ -1,6 +1,8 @@
-angular.module('waitstaffCalc', [])
-	.controller('calculatorCtrl', function($scope, $filter){	
+angular.module('waitstaffCalc', ['ngMessages'])
+	.controller('calculatorCtrl', function($scope){	
 
+		console.log(calculator.$error);
+		
 		// Define function for cancel.
 		$scope.cancel = function(){
 			$scope.baseMeal = 0;
@@ -8,7 +10,7 @@ angular.module('waitstaffCalc', [])
 			$scope.tipPercent = 0;
 		}	
 
-		// Define function for reset.
+		// Define function for initial state.
 		$scope.initialize = function(){
 			$scope.meals = [];
 			$scope.chargesTotal = 0;
@@ -20,6 +22,7 @@ angular.module('waitstaffCalc', [])
 		}
 
 		$scope.initialize();
+
 
 		$scope.addMeal = function(mealBasePrice, mealTaxRate, mealTipPercent, mealSubtotal, mealTip, mealTotal){
 			$scope.chargesSubtotal = mealSubtotal;
@@ -48,17 +51,19 @@ angular.module('waitstaffCalc', [])
 
 
 		$scope.calculate = function(){
-			// Function to calculate meal totals.
-			baseMeal = $scope.baseMeal;
-			taxRate = $scope.taxRate / 100;
-			tipPercent = $scope.tipPercent / 100;
-			subTotal = $scope.chargesSubtotal;
-			tipAmt = $scope.chargesTip;
+			// Function to calculate meal totals, only if form is valid.
+			if($scope.calculator.$valid){
+				baseMeal = $scope.baseMeal;
+				taxRate = $scope.taxRate / 100;
+				tipPercent = $scope.tipPercent / 100;
+				subTotal = $scope.chargesSubtotal;
+				tipAmt = $scope.chargesTip;
 
-			subTotal = baseMeal + (baseMeal * taxRate);
-			tipAmt = subTotal * tipPercent;
-			totalPrice = subTotal + tipAmt;
+				subTotal = baseMeal + (baseMeal * taxRate);
+				tipAmt = subTotal * tipPercent;
+				totalPrice = subTotal + tipAmt;
 
-			$scope.addMeal(baseMeal, taxRate, tipPercent, subTotal, tipAmt, totalPrice);
+				$scope.addMeal(baseMeal, taxRate, tipPercent, subTotal, tipAmt, totalPrice);
+			}
 		};
 	});

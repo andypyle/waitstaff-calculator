@@ -6,6 +6,9 @@ html,
 body {
 	font-family: 'Raleway', 'Verdana', 'Helvetica', sans-serif;
 	font-size: 18px/1.5 !important;
+	height: 100%;
+	min-height: 100%;
+	color: #777;
 }
 
 h1,
@@ -26,19 +29,22 @@ h2 {
 
 header h1 {
 	text-align: center;
-	padding: .75em 0;
+	padding: .5em 0;
 }
 
 header {
-	border-bottom: 1px dotted #CCC;
+	color: white;
+	background-color: #68E598;
+	border-bottom: 1px dotted #EEE;
 }
 
 main {
 	width: 75%;
 	max-width: 85%;
+	min-height: 100%;
 	margin: 0 auto;
-	border-left: 1px dotted #CCC;
-	border-right: 1px dotted #CCC;
+	border-left: 1px dotted #DDD;
+	border-right: 1px dotted #DDD;
 	padding: 1em;
 }
 
@@ -60,7 +66,7 @@ main {
 
 .secHeader {
 	padding: .75em;
-	border-bottom: 1px dotted #CCC;
+	border-bottom: 1px dotted #EEE;
 	width: 100%;
 }
 
@@ -94,8 +100,9 @@ main {
 
 .moneyRow > span input {
 	padding: .5em;
-	width: 5em;
-	border: 1px solid #ddd;
+	width: 5.2em;
+	border: 1px solid #DDD;
+	border-radius: .25em;
 }
 
 .btns {
@@ -103,6 +110,26 @@ main {
 	padding: 1em;
 	text-align: center;
 	min-width: 100%;
+}
+
+.errors {
+	padding: 1em 0;
+}
+
+.errors span {
+	color: tomato !important;
+	font-weight: bold;
+	font-size: .85em;
+	display: block !important;
+	line-height: 1.5em;
+}
+
+input.ng-dirty.ng-invalid {
+	-webkit-box-shadow: inset 0px 0px 28px 0px rgba(255, 63, 65, 1);
+	-moz-box-shadow:    inset 0px 0px 28px 0px rgba(255, 63, 65, 1);
+	box-shadow:         inset 0px 0px 28px 0px rgba(255, 63, 65, 1);
+	transition: box-shadow 0.1s ease-in-out;
+	border: 1px solid rgba(255, 63, 65, .6);
 }
 
 .btns button {
@@ -119,6 +146,26 @@ main {
 	transition: .1s linear;
 }
 
+button.resetBtn {
+	position: absolute;
+	right: .15em;
+	bottom: 0;
+	width: 7em;
+	float: right;
+	padding: .85em .5em;
+	font-size: 1.2em;
+	font-weight: 700;
+	border: 0;
+	margin: 1em .5em;
+	border-radius: .2em;
+	color: white;
+	transition: .1s linear;
+}
+
+button.resetBtn i {
+	padding-left: .15em;
+}
+
 .btns button i {
 	padding-left: .25em;
 	line-height: .5em;
@@ -132,16 +179,33 @@ button[type='submit']:hover {
 	background-color: #78C675;
 }
 
-button[type='cancel'] {
+button[type='reset'] {
 	background-color: #ED614B;
 }
 
-button[type='cancel']:hover {
+button[type='reset']:hover {
 	background-color: #FF6851;
 }
 
+button.resetBtn {
+	background-color: #ED614B;
+}
 
-input:focus {
+button.resetBtn:hover {
+	background-color: #FF6851;
+}
+
+button:disabled {
+	background-color: #CCC;
+	color: #EEE;
+}
+button:disabled:hover {
+	background-color: #CCC;
+}
+
+input:focus,
+button:focus {
+	border-radius: .2em;
 	outline: 2px solid #aaa;
 }
 
@@ -150,22 +214,50 @@ input:focus {
 	font-size: 1.05em;
 	font-weight: 700;
 	padding: .25em;
+	width: 1.25em;
 	margin: 0;	
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	border-top: 1px dotted #EEE;
+	color: white;
+	background-color: #68E598;
+}
+
+footer span {
+	display: inline-block;
+	padding: 2em 3em;
+}
+
+footer span a {
+	color: white;
+	font-weight: 700;
+	background-color: #556F44;
+	text-decoration: none;
+	padding: .2em;
 }
 
 @media only screen and (max-width:600px){
 	h1 {
-	font-size: 1.75em;
-	}
-
-	h2 {
-		font-size: 1.8em;
-		font-weight: 400;
+		font-size: 1.95em;
 	}
 
 	header h1 {
 		padding: .25em;
 	}
+
+	header {
+		color: white;
+		background-color: #68E598;
+	}
+	h2 {
+		font-size: 1.8em;
+		font-weight: 400;
+	}
+
+	
 
 	main {
 		width: 100%;
@@ -204,27 +296,27 @@ input:focus {
 
 	.moneyRow > span input {
 		padding: .5em;
-		width: 2em;
+		width: 3em;
 		border: 1px solid #ddd;
 	}
 
 	.row {
-	display: flex;
-	flex-wrap: wrap;
+		display: flex;
+		flex-wrap: wrap;
 	
 	}
 
 	.column {
-	display: block;
-	clear: both;
-	width: 100% !important;
-	float: left;
-	padding: .25em;
+		display: block;
+		clear: both;
+		width: 100% !important;
+		float: left;
+		padding: .25em;
 
 	}
 
 	.column + .column {
-	margin: 0;
+		margin: 0;
 	}
 
 	label {
@@ -232,23 +324,46 @@ input:focus {
 	}
 
 	.btns {
-	display: block;
-	padding: .5em;
-	text-align: center;
-	min-width: 100%;
+		display: block;
+		padding: .5em;
+		text-align: center;
+		min-width: 100%;
 	}
 
 	.btns button {
-	display: inline-block;
-	width: 48%;
-	float: none;
-	padding: .85em .5em;
-	font-size: 1em;
-	font-weight: 700;
-	border: 0;
-	margin: 0;
-	border-radius: .2em;
-	color: white;
-	transition: .1s linear;
+		display: inline-block;
+		width: 48%;
+		float: none;
+		padding: .85em .5em;
+		font-size: 1em;
+		border: 0;
+		margin: 0;
+	}
+
+	button.resetBtn {
+		position: relative;
+		display: block;
+		width: 100%;
+		float: none;
+		padding: .85em .5em;
+		font-size: 1.2em;
+		font-weight: 700;
+		border: 0;
+		margin: 0 0 1em 0;
+		border-radius: .2em;
+		color: white;
+	}
+
+	footer span {
+		display: inline-block;
+		font-size: .85em;
+		float: left;
+		padding: 2em 2em;
+	}
+
+	footer span + span {
+		display: inline-block;
+		text-align: right;
+		padding: 2em 1em;
 	}
 }

@@ -24,11 +24,12 @@
 <header>
 	<div>
 		<h1>Waitstaff Calculator</h1>
+
 	</div>
 </header>
 
 <main>
-	<form name="calculator" ng-submit="calculate()">
+	<form name="calculator" ng-submit="calculate()" novalidate>
 		<div class="row">
 			<section class="column">
 				<div class="secHeader">
@@ -45,7 +46,7 @@
 									<div class="inputPrefix">
 										$
 									</div>
-									<input required ng-model="baseMeal" type="number" id="mealBase">
+									<input required ng-model="baseMeal" type="number" ng-pattern="/^\d*$/" id="mealBase" name="mealBase">
 								</span>
 							</div>
 							<div class="moneyRow">
@@ -58,7 +59,7 @@
 									<div class="inputPrefix">
 										%
 									</div>
-									<input required ng-model="taxRate" type="number" id="mealTaxRate">
+									<input required ng-model="taxRate" type="number" ng-pattern="/^\d*$/" id="mealTaxRate">
 								</span>
 							</div>
 							<div class="moneyRow">
@@ -71,14 +72,18 @@
 									<div class="inputPrefix">
 										%
 									</div>
-									<input required ng-model="tipPercent" type="number" id="mealTipPercent" />
+									<input required ng-model="tipPercent" type="number" ng-pattern="/^\d*$/" id="mealTipPercent" />
 								</span>
 							</div>						
 						</div>
 						<div class="btns">
+							<div class="errors" ng-show="!calculator.$valid">
+								<span ng-show="calculator.$error.required">Required!</span>
+								<span ng-show="!calculator.$error.pattern">Must be numbers!</span>
+							</div>
 								<div>
 									<button type="reset" ng-click="cancel()">Cancel <i class="fa fa-times fa-lg"></i></button>
-									<button type="submit">Calculate <i class="fa fa-calculator fa-lg"></i></button>
+									<button type="submit" ng-disabled="!calculator.$valid">Add Meal <i class="fa fa-calculator fa-lg"></i></button>
 								</div>
 							</div>
 			</section>
@@ -125,15 +130,23 @@
 						</div>
 					</div>					
 				</div>
-				<div class="reset">
-					<button ng-click="intialize()" class="resetBtn">
-						Reset
-					</button>
-				</div>
 			</aside>
-		</div>
+		</div>		
 	</form>
+	<button ng-click="initialize()" class="resetBtn">
+		Reset <i class="fa fa-repeat fa-lg"></i>
+	</button>
 </main>
+
+<footer>
+	<span>
+		Made by <a href="http://andypyle.github.io" target="_BLANK">Andy Pyle</a>
+	</span>
+	<span>
+		View code on <a href="http://github.com/andypyle/waitstaff-calculator" target="_BLANK">Github</a>
+	</span>
+</footer>
+
 
 
 <!-- - - - - - - - - - - - - - - - - - - - -->
