@@ -44,6 +44,7 @@ main {
 
 .row {
 	display: flex;
+	flex-wrap: nowrap;
 }
 
 .column {
@@ -60,6 +61,7 @@ main {
 .secHeader {
 	padding: .75em;
 	border-bottom: 1px dotted #CCC;
+	width: 100%;
 }
 
 .secHeader + div {
@@ -107,14 +109,36 @@ main {
 	display: inline;
 	width: 45%;
 	float: left;
-	padding: .75em 2em;
-	background-color: #DDD;
+	padding: .85em .5em;
 	font-size: 1.2em;
+	font-weight: 700;
 	border: 0;
 	margin: 0 .5em;
 	border-radius: .2em;
+	color: white;
+	transition: .1s linear;
 }
 
+.btns button i {
+	padding-left: .25em;
+	line-height: .5em;
+}
+
+button[type='submit'] {
+	background-color: #6AAF68;
+}
+
+button[type='submit']:hover {
+	background-color: #78C675;
+}
+
+button[type='cancel'] {
+	background-color: #ED614B;
+}
+
+button[type='cancel']:hover {
+	background-color: #FF6851;
+}
 
 
 input:focus {
@@ -127,4 +151,104 @@ input:focus {
 	font-weight: 700;
 	padding: .25em;
 	margin: 0;	
+}
+
+@media only screen and (max-width:600px){
+	h1 {
+	font-size: 1.75em;
+	}
+
+	h2 {
+		font-size: 1.8em;
+		font-weight: 400;
+	}
+
+	header h1 {
+		padding: .25em;
+	}
+
+	main {
+		width: 100%;
+		border: 0;
+		padding: 0;		
+	}
+
+	.secHeader {
+	border-bottom: 1px dotted #CCC;
+	width: 100%;
+	}
+
+	.moneyTable {
+		display: table;
+	}
+
+	.moneyRow {
+		display: table-row;
+		margin: 0;
+		padding: 0;
+	}
+
+	.moneyRow > span {
+	display: table-cell;
+	text-align: right;
+	font-size: 1.25em;
+	padding: .75em;
+	font-weight: 400;
+	}
+
+	.moneyRow > span + span {
+		text-align: left;
+		padding-left: 0em;
+		font-weight: 300;
+	}
+
+	.moneyRow > span input {
+		padding: .5em;
+		width: 2em;
+		border: 1px solid #ddd;
+	}
+
+	.row {
+	display: flex;
+	flex-wrap: wrap;
+	
+	}
+
+	.column {
+	display: block;
+	clear: both;
+	width: 100% !important;
+	float: left;
+	padding: .25em;
+
+	}
+
+	.column + .column {
+	margin: 0;
+	}
+
+	label {
+		font-size: 1em;
+	}
+
+	.btns {
+	display: block;
+	padding: .5em;
+	text-align: center;
+	min-width: 100%;
+	}
+
+	.btns button {
+	display: inline-block;
+	width: 48%;
+	float: none;
+	padding: .85em .5em;
+	font-size: 1em;
+	font-weight: 700;
+	border: 0;
+	margin: 0;
+	border-radius: .2em;
+	color: white;
+	transition: .1s linear;
+	}
 }
